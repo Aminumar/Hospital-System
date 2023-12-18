@@ -12,6 +12,15 @@ app.post("/patient", async (req, res) => {
   } catch (error) {}
 });
 
+app.get("/patient", async (req, res) => {
+  try {
+    const patients = await patient.find({});
+    res.status(200).json(patients);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 mongoose
   .connect(
     "mongodb+srv://aminumar112:hospital1234@hospitalsystem.7b3gd47.mongodb.net/"
